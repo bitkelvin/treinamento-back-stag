@@ -1,0 +1,36 @@
+# ----------------------------------------
+# MONGO PROPERTIES
+# ----------------------------------------
+spring:
+  data:
+    mongodb:
+      database: estagiarios
+      host: localhost
+      repositories:
+        enabled: true
+  
+# ----------------------------------------
+# EUREKA PROPERTIES
+# ----------------------------------------
+eureka:
+  client:
+    enabled: false
+
+# ----------------------------------------
+# IMAGEM PROPERTIES
+# ----------------------------------------
+imagem:
+  caminho: src\test\resources\imagens
+
+
+# ----------------------------------------
+# NETFLIX PROPERTIES
+# ----------------------------------------
+feign:
+  hystrix:
+    enabled: true
+  url: projeto-calculo
+    
+ribbon:
+  eureka:
+    enabled: true

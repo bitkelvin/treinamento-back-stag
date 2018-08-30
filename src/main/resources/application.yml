@@ -1,0 +1,31 @@
+server:
+  port: 8008
+
+feign:
+    hystrix:
+        enabled: true
+    url: projeto-calculo
+
+logging:
+  level: 
+    root: warn
+  file: logs/stag.log 
+  
+backlog:
+  fileNamePattern: logs/stag_%d{yyyy-MM-dd}.%i.log
+  
+info:
+  config: local
+  app:
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+  encoding: "@project.build.sourceEncoding@"
+  java:
+    version: "@java.version@"
+    
+imagem:
+  caminho: src\main\resources\imagens
+  
+management:
+  context-path: /secure  

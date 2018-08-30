@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: projeto-estagiario
+  cloud: 
+    config:
+      enabled: false
+      discovery:
+        enabled: false
+          
+server:
+  port: 8080

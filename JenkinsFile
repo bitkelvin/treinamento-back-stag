@@ -1,0 +1,76 @@
+pipeline {
+    agent any
+
+    stages {
+    
+        stage ('Compile Stage') {
+            steps {
+                withMaven(maven : 'maven_4_0_0') {
+                    bat 'mvn clean install -DskipTests'
+                }
+        	}
+        }					
+			    
+    	stage ('Sonar Stage') {
+            steps {
+                withMaven(maven : 'maven_4_0_0') {
+                    bat 'mvn sonar:sonar'
+                }
+        	}
+        }	
+
+        stage ('Unit Testing Stage') {
+            steps {
+                withMaven(maven : 'maven_4_0_0') {
+                    bat 'mvn test'
+                }
+            }
+        }
+
+		stage ('Integration Testing Stage') {
+            steps {
+                withMaven(maven : 'maven_4_0_0') {
+                    bat 'mvn failsafe:integration-test'
+                }
+            }
+        }
+                
+        stage ('Docker Image Stage') {
+            steps {
+                withMaven(maven : 'maven_4_0_0') {
+                    bat 'mvnw install dockerfile:build -Dmaven.test.skip=true'
+                }
+            }
+        }   
+        
+        
+        //TODO: implementar DEV Stage
+        stage ('Deploy DEV Stage') {
+             steps {
+                withMaven(maven : 'maven_4_0_0') {
+                    bat ''
+                }
+            }                  
+        }
+                
+        //TODO: implementar HMG Stage
+        stage ('Deploy HMG Stage') {
+             steps {
+                withMaven(maven : 'maven_4_0_0') {
+                    bat ''
+                }
+            }                  
+        }
+                
+        //TODO: implementar PROD Stage
+        stage ('Deploy PROD Stage') {
+             steps {
+                withMaven(maven : 'maven_4_0_0') {
+                    bat ''
+                }
+            }                  
+        }
+
+
+    }
+}

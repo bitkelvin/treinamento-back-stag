@@ -1,0 +1,29 @@
+spring:
+  data:
+    mongodb:
+      database: estagiarios
+      host: localhost
+      port: 27017
+      repositories:
+        enabled: true
+  application:
+    name: projeto-estagiario
+  cloud: 
+    config:
+      #PARA CONF. LOCAL DO DIRETORIO:
+      label: master
+      
+      # PARA CONF. DIRETO DO GIT:
+      #label: develop
+      
+      enabled: true
+      discovery:
+        enabled: true
+        serviceId: config-server
+  
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
